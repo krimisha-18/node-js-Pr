@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Table</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .table-container {
+            background-color: #ffffff;
+            padding: 20px;                      
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .table th, .table td {
+            text-align: center;
+        }
+        .btn-action {
+            margin: 0 5px;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            color: #ffffff;
+            border: none;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+        .btn-edit {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+        }
+        .btn-add {
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">     
+        <div class="row justify-content-center">
+            <div class="col-md-10 table-container">
+                <h2 class="text-center mb-4">User List</h2>
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>SRNO</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    
+                        <% users.map((val, i) => { %>
+                            <tr>
+                                <td><%= ++i %></td>
+                                <td><%= val.name %></td>
+                                <td><%= val.email %></td>
+                                <td>
+                                    <a href="/deleteRecord?id=<%= val.id %>" class="btn btn-delete btn-action">Delete</a>
+                                </td>
+                                <td>
+                                    <a href="/editRecord?id=<%= val.id %>" class="btn btn-edit btn-action">Edit</a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                
+            </div>
+
+           
+        </div>
+    </div>
+
+        <center><br><br>
+            <a href="/add" class="btn btn-add">Add New User</a>
+        </center>
+
+    <!-- Bootstrap JS and dependencies -->
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
