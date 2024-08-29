@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9f1f7; 
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff; 
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        h2 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 12px;
+            vertical-align: middle;
+        }
+        input[type="text"], input[type="file"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #004494;
+        }
+        img {
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ADD THE DETAILS OF THE BOOK</h2>
+        <form method="post" action="/insertRecord" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>Book Name:</td>
+                    <td><input type="text" name="name" required></td>
+                </tr>
+                <tr>
+                    <td>Book Price:</td>
+                    <td><input type="text" name="price" required></td>
+                </tr>
+                <tr>
+                    <td>Book Pages:</td>
+                    <td><input type="text" name="pages" required></td>
+                </tr>
+                <tr>
+                    <td>Book Author:</td>
+                    <td><input type="text" name="author" required></td>
+                </tr>
+                <tr>
+                    <td>Book Image:</td>
+                    <td><input type="file" name="image" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Add Record">
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <center>
+                <a href="/">VIEW BOOK DETAILS</a>
+            </center>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Records</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9f1f7; 
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        h2 {
+            color: #357ac3;; 
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #357ac3;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f9fc;
+        }
+        tr:hover {
+            background-color: #e1f5fe;
+        }
+        img {
+            border-radius: 4px;
+        }
+        a {
+            color: #4b80b9;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>VIEW YOUR BOOK DETAILS</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Book Name</th>
+                    <th>Book Price</th>
+                    <th>Book Pages</th>
+                    <th>Book Author</th>
+                    <th>Book Image</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.map((val, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= val.name %></td>
+                        <td><%= val.price %></td>
+                        <td><%= val.pages %></td>
+                        <td><%= val.author %></td>
+                        <td><img src="<%= val.image %>" width="100" /></td>
+                        <td><a href="/deleteRecord?deleteId=<%= val.id %>">Delete</a></td>
+                        <td><a href="/editRecord?editId=<%= val.id %>">Edit</a></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <br>
+        <center>
+            <a href="/add">ADD MORE DATA</a>
+        </center>
+    </div>
+</body>
+</html>

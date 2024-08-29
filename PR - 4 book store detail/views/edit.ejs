@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* Light gray background */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff; /* White background for the form */
+            box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Slight shadow for a card-like effect */
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        h2 {
+            color: #004d99; /* Dark blue */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 12px;
+            vertical-align: middle;
+        }
+        input[type="text"], input[type="file"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #004d99; /* Dark blue */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #003d7a; /* Slightly darker blue for hover effect */
+        }
+        img {
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        a {
+            color: #004d99; /* Dark blue */
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Record</h2>
+        <form method="post" action="/updateRecord" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>Id:</td>
+                    <td><input type="hidden" value="<%= single.id %>" name="editid"></td>
+                </tr>
+                <tr>
+                    <td>Book Name:</td>
+                    <td><input type="text" value="<%= single.name %>" name="name" required></td>
+                </tr>
+                <tr>
+                    <td>Book Price:</td>
+                    <td><input type="text" value="<%= single.price %>" name="price" required></td>
+                </tr>
+                <tr>
+                    <td>Book Pages:</td>
+                    <td><input type="text" value="<%= single.pages %>" name="pages" required></td>
+                </tr>
+                <tr>
+                    <td>Book Author:</td>
+                    <td><input type="text" value="<%= single.author %>" name="author" required></td>
+                </tr>
+                <tr>
+                    <td>Image:</td>
+                    <td>
+                        <input type="file" name="image">
+                        <img src="<%= single.image %>" width="100" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Update Record">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <a href="/">Back to View Data</a>
+    </div>
+</body>
+</html>
