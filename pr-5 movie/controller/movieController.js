@@ -114,4 +114,4 @@ module.exports = {
     deleteMovie,
     editMovie,
     UpdateMovie
-};
+};krimsib
