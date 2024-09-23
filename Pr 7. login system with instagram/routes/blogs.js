@@ -28,7 +28,7 @@ router.post('/blogs', upload.single('image'), async (req, res) => {
 
     router.post('/blogs/:id/delete', async (req, res) => {
     const blog = await Blog.findById(req.params.id);
-    if (blog) {rrrrrrr
+    if (blog) {
         await Blog.deleteOne({ _id: req.params.id });
         // Unlink the image
         fs.unlinkSync(`public/uploads/${blog.image}`);

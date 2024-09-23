@@ -1,0 +1,121 @@
+<%- include('Header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5; 
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .page-wrapper {
+            width: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-left: 450px!important ;
+            margin-top: 30px;
+
+        }
+        .page-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .form-control {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 20px;
+            width: 100%;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus {
+            border-color: #3897f0; 
+            outline: none;
+            box-shadow: 0 0 5px rgba(56, 151, 240, 0.5);
+        }
+        .btn-success {
+            background-color: #3897f0;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn-success:hover {
+            background-color: #2a82d4;
+        }
+        .upload-area {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            border: 2px dashed #ccc;
+            border-radius: 15px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+        }
+        .upload-area:hover {
+            background-color: #f1f1f1;
+        }
+        .upload-icon {
+            font-size: 50px;
+            color: #3897f0;
+            margin-bottom: 10px;
+        }
+        .footer-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer-button a {
+            text-decoration: none;
+            color: #3897f0; 
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            .page-wrapper {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="page-title">Create New Post</div>
+        <form action="/insertBlog" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Title:</label>
+                <input type="text" class="form-control" name="title" placeholder="Enter post title" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description:</label>
+                <input type="text" class="form-control" name="description" placeholder="Enter post description" required>
+            </div>
+            <div class="upload-area">
+                <i class="fas fa-camera upload-icon"></i>
+                <label for="imageUpload" style="cursor: pointer; font-weight: bold;">Upload Image</label>
+                <input type="file" id="imageUpload" class="form-control" name="image" accept="image/*" required style="display: none;">
+            </div>
+            <button type="submit" class="btn btn-success">Submit Post</button>
+        </form>
+        <div class="footer-button">
+            <a href="/admin">View All Posts</a>
+        </div>
+    </div>
+</body>
+</html>
+<%- include('Footer') %>

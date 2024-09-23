@@ -1,0 +1,97 @@
+        <%- include('Header') %>
+        <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Show Blogs</h4>
+            </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Insta Posts</h4>
+                    <div class="row">
+                    <% blog.map((val) => { %>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card border-0 shadow-sm">
+                        <img
+                            src="<%= val.image %>"
+                            alt="Blog Image"
+                            class="card-img-top rounded-top"
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title"><%= val.title %></h5>
+                            <p class="card-text"><%= val.description %></p>
+                            <div class="d-flex justify-content-between">
+                            <a
+                                class="btn btn-primary"
+                                href="/editBlog?editId=<%= val.id %>"
+                                >Edit</a
+                            >
+                            <a
+                                class="btn btn-danger"
+                                href="/deleteBlog?deletId=<%= val.id %>"
+                                >Delete</a
+                            >
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <%- include('Footer') %>
+
+        <style>
+        body {
+            background-color: #f4f7fa;
+        }
+        .page-title {
+            font-weight: bold;
+            font-size: 28px;
+        }
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .card-text {
+            font-size: 14px;
+            color: #666;
+        }
+        .btn {
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+        .btn-primary {
+            background-color: #3897f0;
+            border: none;
+        }
+        .btn-danger {
+            background-color: #f44336;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #2a82d4;
+        }
+        .btn-danger:hover {
+            background-color: #c62828;
+        }
+        </style>
