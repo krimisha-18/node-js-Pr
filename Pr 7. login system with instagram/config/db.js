@@ -1,19 +1,17 @@
+const mongoose = require('mongoose')
 
-        //    `
-        const mongoose = require('mongoose');
+const connectDB = async() =>{
 
-        const connectDB = async () => {
-            try {
-                await mongoose.connect('mongodb+srv://krimisha025:krimisha025@cluster0.jrq90.mongodb.net/insta-post-pr-7`', {
-                    useNewUrlParser: true,
-                    useUnifiedTopology: true,
-                });
-                console.log('MongoDB connected');
-            } catch (err) {
-                console.error(err.message);
-                process.exit(1);
-            }
-        };
+    try {
         
-        module.exports = connectDB;
+        const conn = await mongoose.connect(
+           `mongodb+srv://krimisha025:krimisha025@cluster0.jrq90.mongodb.net/PR-7-insta-post-passport`
+        )
+        console.log(`MongoDB Connected: ${conn.connection.host}`)
+    } catch (error) {
+        console.log(error);
+        return false;
         
+    }
+}
+module.exports = connectDB;

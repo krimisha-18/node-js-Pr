@@ -1,29 +1,45 @@
-const express = require('express');
-const session = require('express-session');
+const express = require("express");
+const connectDB = require("./config/db");
+const app = express()
+const port = 4000 ;
+connectDB()
+
+app.set('view engine','ejs')
+const path = require('path');
+
+
+const cookieParser = require('cookie-parser')
+app.use(cookieParser());
+
+app.use(express.static(path.join(__dirname, 'public')))
+
+
+app.use(express.urlencoded());
+app.use(express.json());
+
+app.use('/uploads',express.static(path.join(__dirname,"uploads")));
+
 const passport = require('passport');
-const mongoose = require('mongoose');
-const connectDB = require('./config/db');
-const initializePassport = require('./config/passport');
-const blogRoutes = require('./routes/blogs');
-const userRoutes = require('./routes/users');
+const session = require('express-session');
+const passportLocal = require('./config/passportLocal')
 
-const app = express();
-connectDB();
-
-initializePassport(passport);
-
-app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public'));
 app.use(session({
     secret: 'secret',
     resave: false,
-    saveUninitialized: false
-}));
+    saveUninitialized: true,
+    cookie:{
+        maxAge: 24*60*60*1000
+    }
+
+}))
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.setUser)
 
-app.use('/', userRoutes);
-app.use('/admin', blogRoutes);
+app.use('/',require('./routes/indexRoutes'))
 
-app.listen(3000, () => console.log('Server started on http://localhost:3000'));
+app.listen(port,(err) =>{
+    if(err) console.log(err);
+
+    console.log(`server is running on port ${port}`)
+})
