@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const AddBlog = (req, res) => {
-    return res.render("add user")
+    return res.render("Addblog")
 }
 const Showblog = async (req, res) => {
     try {
