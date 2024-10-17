@@ -1,0 +1,106 @@
+<%- include('../header') %>
+
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">Form</h4>
+                    <div class="ms-auto text-end">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Library
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+<!-- 
+                        <% if(locals.success !="" ) { %>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <%= locals.success %>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                            <% } %> -->
+
+                                <form action="/subcategory/updateSubcategory" method="post" class="form-horizontal">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Edit Subcategory</h4>
+                                        <input type="hidden" value="<%= single.id%>" name="editid">
+                                        <div class="form-group row">
+                                            <label for="fname"
+                                                class="col-sm-3 text-end control-label col-form-label">Category</label>
+                                            <div class="col-sm-9">
+                                                <select name="category" class="form-control" id="fname">
+                                                    <option >---select Category--</option>
+                                                    
+                                                    <% category.map((cate)=>{ %>
+                                                        <option <% if(cate.category == single.categoryId?.category) { %> selected <% } %>value="<%= cate.id %>"><%= cate.category %></option>
+                                                      <% }) %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="fname"
+                                                class="col-sm-3 text-end control-label col-form-label">Subcategory</label>
+                                           
+                                            <div class="col-sm-9">
+                                                <input type="text" name="subcategory" value="<%= single.subcategory%>" class="form-control" id="fname"
+                                                    placeholder="Category Name Here" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="border-top">
+                                        <div class="card-body">
+                                            <button type="submit" class="btn btn-primary">
+                                                Submit
+                                            </button>
+                                            <a href="/subcategory" class="btn btn-info">View</a>
+                                        </div>
+                                    </div>
+                                </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            All Rights Reserved by Matrix-admin. Designed and Developed by
+            <a href="https://www.wrappixel.com">WrapPixel</a>.
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+
+    <%- include('../footer') %>

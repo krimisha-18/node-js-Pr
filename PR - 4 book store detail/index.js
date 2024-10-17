@@ -3,11 +3,11 @@ const express = require('express');
 const port = 9000;
 
 const app = express();
-
-//database attechement 
+    
+//database attachment 
 const db = require('./config/db');
 
-//model aatechmenet
+//model attachment
 const UserModel = require('./models/UserModel');
 
 const fs = require('fs');
@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded());
 
-const path = require('path');
+const path = require('path');   
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -127,8 +127,6 @@ app.post('/updateRecord', uploadFile, (req, res) => {
             price: price,
             pages: pages,
             author: author,
-
-
             image: req.file.path
         }).then((response) => {
             console.log("Record update");

@@ -9,10 +9,10 @@ const db = mongoose.connection;
 db.on('connected', (err) => {
     if (err) 
     {
-        console.log(err);
-        return false;
+            console.log(err);
+            return false;
     }
-    console.log(`YEAH....MONGODB CONNECT....!!`);
+        console.log(`YEAH....MONGODB CONNECT....!!`);
 
 })
-module.exports = db
+module.exports = db;
